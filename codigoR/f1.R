@@ -505,18 +505,26 @@ rating = c(DataSet1$rating)
 carbo <- c(DataSet1$carbo)
 carbo <- as.numeric(carbo)
 
-y = calories
-x = 4*(protein) + 4*(carbo)+4*(sugar)+9*(fat)
-
-plot(x,y,main="Scatterplot")
-
-mod = lm(y~x)
-
+#mejor modelo
+mod = lm(calories~fat+sugar+carbo+protein)
 summary(mod)
 
-mod$coefficients
-abline(mod)
-abline(mod,col=2,lwd=3)
+#intervalos de confianza
+
+intervalos = predict(mod,interval = "confidence",level = 0.95)
+print(intervalos)
+
+#anova 
+anova=aov(mod)
+summary(anova)
+
+#-----------------------
+
+
+plot(fat+sugar+carbo+protein,calories,main = "Modelo de regresión lineal múltiple")
+
+
+
 
 #fijamos la var ind es decir x, 
 # asignamos el valor 1
