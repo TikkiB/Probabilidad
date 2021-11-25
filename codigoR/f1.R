@@ -523,18 +523,3 @@ summary(anova)
 
 plot(fat+sugar+carbo+protein,calories,main = "Modelo de regresión lineal múltiple")
 
-
-
-
-#fijamos la var ind es decir x, 
-# asignamos el valor 1
-
-x_n = data.frame(x=1)
-
-predict(mod,x_n)
-
-
-predict(mod,x_n,level=0.9,interval="confidence")
-
-
-predict(mod,x_n,level=0.9,interval="prediction")
